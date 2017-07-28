@@ -39,6 +39,10 @@ namespace SpellChecker
         public async Task<List<WordHistory>> GetWordHistoryList()
         {
             return await this.wordHistoryTable.ToListAsync();
-        }  
+        }
+        public async Task PostWordHistory(WordHistory wordHistory)
+        {
+            await this.wordHistoryTable.InsertAsync(wordHistory);
+        }
     }
 }

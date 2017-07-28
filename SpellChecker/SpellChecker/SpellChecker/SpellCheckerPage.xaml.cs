@@ -36,6 +36,7 @@ namespace SpellChecker
                     IsProcessing = true;
 
                     var spellCheckResult = await bingSpellCheckService.SpellCheckTextAsync(Phrase.Text);
+                    await PostWords();
                     foreach (var flaggedToken in spellCheckResult.FlaggedTokens)
                     {
                         Phrase.Text = Phrase.Text.Replace(flaggedToken.Token, flaggedToken.Suggestions.FirstOrDefault().Suggestion);
@@ -50,6 +51,14 @@ namespace SpellChecker
                 Debug.WriteLine(ex.Message);
             }
         }
-        
+        async Task PostWords()
+        {
+            WordHistory model = new WordHistory()
+            {
+                Words = Phrase.Text
+            };
+            await AzureManager.AzureManagerInstance.PostWordHistory(model);
+        }
+
     }
 }
