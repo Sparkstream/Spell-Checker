@@ -2,14 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SpellChecker.History"
+             x:Name="page"
              Title ="History">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Icon" Order="Primary" Icon="icon.png" Priority="1" />
     </ContentPage.ToolbarItems>
     <StackLayout Margin="20" Orientation="Vertical">
-        
+        <ActivityIndicator HorizontalOptions="Center" IsRunning="{Binding Source={x:Reference page}, Path=IsProcessing}" />
+        <Button Image="refresh.png" Text="Refresh History" TextColor="White" BackgroundColor="Green" Clicked="RefreshHistory" />
         <ListView x:Name="WordList" HasUnevenRows="True">
-            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Words, StringFormat='{0:G}'}" HorizontalOptions="FillAndExpand" Margin="20,0,0,0" VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
 </ContentPage>

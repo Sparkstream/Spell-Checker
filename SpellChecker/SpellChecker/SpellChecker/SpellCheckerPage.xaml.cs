@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Newtonsoft.Json;
+using SpellChecker.Data_Models;
 
 namespace SpellChecker
 {
@@ -49,5 +50,6 @@ namespace SpellChecker
                 Debug.WriteLine(ex.Message);
             }
         }
+        
     }
 }
