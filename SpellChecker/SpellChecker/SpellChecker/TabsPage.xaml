@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:SpellChecker" 
+    x:Class="SpellChecker.TabsPage">
+    <NavigationPage Title="Spell Checker">
+        <x:Arguments>
+            <local:SpellCheckerPage Title="Spell Checker" />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="History">
+        <x:Arguments>
+            <local:History Title="Spell Checker" />
+        </x:Arguments>
+    </NavigationPage>
+
+</TabbedPage>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpellChecker.History"
+             Title ="History">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Icon" Order="Primary" Icon="icon.png" Priority="1" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Margin="20" Orientation="Vertical">
+        <Button Image="refresh.png" Text="Refresh History" TextColor="White" BackgroundColor="Green" Clicked="RefreshHistory" />
+        <ListView x:Name="WordList" HasUnevenRows="True">
+            
+        </ListView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpellChecker.SpellCheckerPage"
+             x:Name="page">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Icon" Order="Primary" Icon="icon.png" Priority="1" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+
+        <Entry x:Name="Phrase" Placeholder="Enter your phrase here"/>
+        <Button Image="spellcheck.png" Text="Press button to spell check" Clicked="OnSpellCheckButtonClicked" />
+
+    </StackLayout>
+</ContentPage>
