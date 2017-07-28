@@ -7,7 +7,7 @@
         <ToolbarItem Name="Icon" Order="Primary" Icon="icon.png" Priority="1" />
     </ContentPage.ToolbarItems>
     <StackLayout Margin="20" Orientation="Vertical">
-        <Button Image="refresh.png" Text="Refresh History" TextColor="White" BackgroundColor="Green" Clicked="RefreshHistory" />
+        
         <ListView x:Name="WordList" HasUnevenRows="True">
             
         </ListView>

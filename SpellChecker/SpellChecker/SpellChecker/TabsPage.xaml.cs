@@ -7,9 +7,9 @@ using Xamarin.Forms;
 
 namespace SpellChecker
 {
-    public partial class MainPage : ContentPage
+    public partial class TabsPage : TabbedPage
     {
-        public MainPage()
+        public TabsPage()
         {
             InitializeComponent();
         }

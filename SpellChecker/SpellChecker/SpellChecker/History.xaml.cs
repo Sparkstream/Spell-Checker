@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Microsoft.WindowsAzure.MobileServices;
+
 
 namespace SpellChecker
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class History : ContentPage
     {
+
         public History()
         {
             InitializeComponent();
         }
+
     }
 }

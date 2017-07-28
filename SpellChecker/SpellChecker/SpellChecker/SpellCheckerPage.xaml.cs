@@ -1,20 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
 
 namespace SpellChecker
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SpellCheckerPage : ContentPage
     {
+        IBingSpellCheckService bingSpellCheckService;
+
+        public static readonly BindableProperty IsProcessingProperty =
+            BindableProperty.Create("IsProcessing", typeof(bool), typeof(SpellCheckerPage), false);
+
+        public bool IsProcessing
+        {
+            get { return (bool)GetValue(IsProcessingProperty); }
+            set { SetValue(IsProcessingProperty, value); }
+        }
+
         public SpellCheckerPage()
         {
             InitializeComponent();
+            bingSpellCheckService = new BingSpellCheckService();
+        }
+
+        async void OnSpellCheckButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(Phrase.Text))
+                {
+                    IsProcessing = true;
+
+                    var spellCheckResult = await bingSpellCheckService.SpellCheckTextAsync(Phrase.Text);
+                    foreach (var flaggedToken in spellCheckResult.FlaggedTokens)
+                    {
+                        Phrase.Text = Phrase.Text.Replace(flaggedToken.Token, flaggedToken.Suggestions.FirstOrDefault().Suggestion);
+                    }
+                    OnPropertyChanged("SpellCheckText");
+
+                    IsProcessing = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
     }
 }

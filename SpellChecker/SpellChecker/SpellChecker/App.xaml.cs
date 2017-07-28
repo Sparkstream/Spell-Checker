@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SpellChecker
 {
     public partial class App : Application
@@ -13,7 +15,7 @@ namespace SpellChecker
         {
             InitializeComponent();
 
-            MainPage = new SpellChecker.MainPage();
+            MainPage = new TabsPage();
         }
 
         protected override void OnStart()
